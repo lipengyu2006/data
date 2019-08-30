@@ -1,0 +1,88 @@
+%% single
+%% main
+key: <<"0">>
+value:
+#{
+  <<"sum_issue">> => 15,
+  <<"sum_user">> => 10,
+  <<"sum_array_del_issue">> => 1,
+  <<"di1">> => [2, 5],
+  <<"sum_array_del_user">> => 1,
+  <<"du1">> => [1, 7]
+}
+
+%% multiple
+%% user
+%% B0 -- user
+%% B1 -- number
+key: <<B0:1/bytes, B1/bytes>> = <<"6", "1">>
+value:
+#{
+  <<"status_type">> => <<"11">>,
+  <<"name">> => <<"name">>,
+  <<"freeze_date">> => <<"timestamp">>,
+  <<"freeze_issue">> => 0
+}
+
+%% multiple
+%% user's issue
+%% B0 -- user's issue
+%% B1 -- user_issue
+key: <<B0:1/bytes, B1/bytes>> = <<"7", "8_3">>
+value:
+#{
+  <<"comment">> => [3, 9, 10],
+  <<"del">> => [8]
+}
+
+
+%% multiple
+%% issue
+%% B0 -- issue
+%% B1 -- number
+key: <<B0:1/bytes, B1/bytes>> = <<"8", "1">>
+value:
+#{
+  <<"status_type">> => <<"11">>,
+  <<"user">> => <<"name">>,
+  <<"date">> => <<"date">>,
+  <<"freeze_date">> => <<"timestamp">>,
+  <<"sum_comments">> => 100,
+  <<"freeze_comments">> => 50,
+  <<"entity">> => <<"xxx">>
+}
+
+%% multiple
+%% comment
+%% B0 -- comment
+%% B1 -- issue_number
+key: <<B0:1/bytes, B1/bytes>> = <<"9", "1_10">>
+Value:
+#{
+  <<"status_type">> => <<"11">>,
+  <<"user">> => <<"name">>,
+  <<"date">> => <<"date">>,
+  <<"entity">> => <<"xxx">>
+}
+
+
+from issue:
+issue-1-json:
+{
+  1: {},
+  2: {}
+}
+
+issue-comment-1-json:
+{
+  1: {},
+  2: {},
+  3: {}
+}
+
+from user
+user-issue-1-json:
+{
+  issue3: [comment7, comment12],
+  issue9: [comment2, comment29]
+}
