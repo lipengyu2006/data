@@ -33,34 +33,37 @@ value:
 }
 
 %% multiple
-%% oneup reference
-%% B0 -- oneup
-%% B1 -- issue's number
-key: <<B0:1/bytes, B1/bytes>> = <<"6", "1">>
-value:
-#Ref<vvv.xxx.yyy.zzz>
-
-%% multiple
 %% issue
-%% B0 -- issue
+%% B0 -- type issue
 %% B1 -- number
-key: <<B0:1/bytes, B1/bytes>> = <<"7", "1">>
+key: <<B0:1/bytes, B1/bytes>> = <<"6", "1">>
 value:
 #{
   <<"status_type">> => <<"11">>,
-  <<"user">> => <<"name">>,
+  <<"userid">> => <<"nameid">>,
   <<"date">> => <<"date">>,
   <<"freeze_date">> => <<"timestamp">>,
-  <<"sum_comments">> => 100,
   <<"freeze_comments">> => 50,
+  <<"ref">> => <<"reference">>,
   <<"entity">> => <<"xxx">>
 }
 
 %% multiple
+%% list comments
+%% B0 -- type comments
+%% B1 -- user's id
+key: <<B0:1/bytes, B1/bytes>> = <<"7", "1">>
+value:
+#{
+  % build issue
+  <<"1">> => [<<"issue4">>, <<"issue9">>],
+  % send comment to issue
+  <<"2">> => [<<"issue2">>]
+}
+
+%% multiple
 %% comment
-%% B0 -- comment
-%% B1 -- issue_number
-key: <<B0:1/bytes, B1/bytes>> = <<"8", "1_10">>
+key: <<"issueid", "_", "commentid">>
 Value:
 #{
   <<"status_type">> => <<"11">>,
