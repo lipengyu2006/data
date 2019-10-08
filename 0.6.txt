@@ -63,9 +63,16 @@ Value:
   date = erlang:timestamp(),
   usr_id,
   usr_name,
+  ip,
+  userAgent,
   entity
 }
 
+%% multiple
+%% comment archive
+key: <<"issueid", "+", "archiveid">>
+Value:
+[<<"commentVal1">>, <<"commentVal2">>, <<"commentVal3">>]
 
 from issue:
 issue-1-json:
