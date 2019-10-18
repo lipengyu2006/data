@@ -55,6 +55,14 @@ value:
 []
 
 %% multiple
+%% archive list
+%% B0 -- type
+%% B1 -- archive's id
+key: <<B0:1/bytes, B1/bytes>> = <<"9", "1">>
+value:
+[1, 4, 8]
+
+%% multiple
 %% comment
 key: <<"issueid", "_", "commentid">>
 Value:
