@@ -11,6 +11,14 @@ issue_id  comemnt_cnt
 
 
 %% multiple
+%% bucket
+%% B0 -- type issue
+%% B1 -- issue's id
+key: <<B0:1/bytes, B1/bytes>> = <<"4", "1">>
+
+
+
+%% multiple
 %% user
 %% B0 -- type issue
 %% B1 -- user's id
